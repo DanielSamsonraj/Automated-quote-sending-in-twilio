@@ -2,8 +2,8 @@ from twilio.rest import Client
 from bible_verses import get_message
 
 
-account_sid = 'AC68981bf65fee38f68a59a56eac6b7486'
-auth_token = '81da9f6e09ba7f428936a1480b4f5279'
+account_sid = 'ACc828789a0014ae683094197c78eb1bff'
+auth_token = '9b87279682528ae846648ea4fb34e5b4'
 client = Client(account_sid, auth_token)
 
 
