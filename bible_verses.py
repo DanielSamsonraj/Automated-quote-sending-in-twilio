@@ -1,38 +1,26 @@
 import requests
 import random
 from translate import Translator
-references = [
-    {
-        'book_name': 'romans ',
-        'chapter_no': '8:',
-        'verse_no': '38',
-    },
-    {
-        'book_name': 'lamentations ',
-        'chapter_no': '3:',
-        'verse_no': '22',
-    },
-    {
-        'book_name': 'john ',
-        'chapter_no': '15:',
-        'verse_no': '13',
-    },
-    {
-        'book_name': 'ephesians ',
-        'chapter_no': '3:',
-        'verse_no': '20',
-    },
-    {
-        'book_name': 'deuternomy ',
-        'chapter_no': '31:',
-        'verse_no': '6',
-    },
-    {
-        'book_name': 'Psalm ',
-        'chapter_no': '27:',
-        'verse_no': '12',
-    }
-]
+from bs4 import BeautifulSoup
+
+page = requests.get('https://www.christianity.com/bible/dbv.php')
+soup = BeautifulSoup(page.content, "html.parser")
+data = soup.findAll("div", {"class": "row margin-top-20"})
+data1 = data[0].findAll("div", {"class": "col-md-12"})
+message = data1[0].find("blockquote").get_text()
+message = message.split(" ")
+verse = ""
+for msg in message:
+    if msg != '':
+        verse += msg + " "
+verseNO = data1[0].find("a").get_text()
+verseNO = verseNO.split(" ")
+
+verse_number = ""
+for msg in verseNO:
+    if msg != '':
+        verse_number += msg + " "
+print(verse_number, verse)
 
 
 def get_message():
