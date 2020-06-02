@@ -1,2 +1,2 @@
-twilio==6.35.0
-ApScheduler==3.6.1s
+twilio==6.40.0
+ApScheduler==3.6.3
